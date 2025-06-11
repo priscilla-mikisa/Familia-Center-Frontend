@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react';
 import {
   Calendar,
   Video,
@@ -7,24 +6,10 @@ import {
   FileText,
   MessageCircle,
   User,
-  Bell,
-  Search,
-  ChevronDown,
   Clock,
-  CheckCircle,
-  Award,
-  BarChart2,
-  Heart,
-  Menu,
-  X,
-  Settings,
-  LogOut,
-  Home,
-  Sidebar
 } from 'lucide-react';
 import Header from '../Header';
 import Layout from '../Layout';
-import Sessions from '../Sessions/page';
 
 const PatientDashboard = () => {
   

@@ -74,7 +74,7 @@ const Header = () => {
                             <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                               <BookOpen className="w-8 h-8 text-gray-400" />
                             </div>
-                            <p className="text-gray-600">You haven't enrolled in any programs yet</p>
+                            <p className="text-gray-600">You haven&apos;t enrolled in any programs yet</p>
                             <button className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm">
                               Browse Programs
                             </button>

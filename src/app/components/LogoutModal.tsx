@@ -1,4 +1,3 @@
-// app/components/LogoutModal.tsx
 'use client';
 
 import { useState } from 'react';
@@ -15,10 +14,8 @@ const LogoutModal = ({ isOpen, onClose }: LogoutModalProps) => {
 
   const handleLogout = () => {
     setIsLoading(true);
-    // Simulate logout process
     setTimeout(() => {
       setIsLoading(false);
-      // Redirect to login page after logout
       router.push('/login');
     }, 1500);
   };
@@ -37,7 +34,7 @@ const LogoutModal = ({ isOpen, onClose }: LogoutModalProps) => {
           
           <h3 className="text-xl font-bold text-gray-900 mb-2">Log out of your account?</h3>
           <p className="text-gray-600 mb-6">
-            Are you sure you want to log out? You'll need to sign back in to access your account.
+            Are you sure you want to log out? You&apos;ll need to sign back in to access your account.
           </p>
           
           <div className="flex justify-center space-x-4">

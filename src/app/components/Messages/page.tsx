@@ -117,7 +117,7 @@ const MessagesPage = () => {
                 </div>
                 <div>
                   <div className="bg-white rounded-lg rounded-tl-none p-4 shadow-sm max-w-md">
-                    <p>That's great to hear! I'm looking forward to our session tomorrow at 10 AM.</p>
+                    <p>That&apos;s great to hear! I&apos;m looking forward to our session tomorrow at 10 AM.</p>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">10:30 AM</p>
                 </div>
