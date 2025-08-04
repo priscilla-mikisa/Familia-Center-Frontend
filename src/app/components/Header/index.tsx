@@ -31,7 +31,7 @@ const Header = () => {
                       <User className="w-5 h-5 text-green-600" />
                     </div>
                     <div className="hidden md:block">
-                      <p className="text-sm font-medium text-gray-900">Alex Morgan</p>
+                      <p className="text-sm font-medium text-gray-900">User</p>
                       <p className="text-xs text-gray-500">Patient</p>
                     </div>
                     <ChevronDown className="w-4 h-4 text-gray-500" />
