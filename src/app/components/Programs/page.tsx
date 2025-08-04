@@ -92,7 +92,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Award, BookOpen, Clock } from "lucide-react";
 import Layout from "../Layout";
 import { usePrograms } from "@/app/hooks/usePrograms";
-import { CardSkeleton } from '../LoadingSkeleton/page';
+import { CardSkeleton } from '../LoadingSkeleton';
 
 const ProgramsPage = () => {
   const { programs: initialPrograms, loading, error, enrollInProgram } = usePrograms();

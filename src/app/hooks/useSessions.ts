@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import { SessionService } from '../api/sessions/route';
+import { SessionService } from '../api/sessions/sessions';
 
 export const useSessions = (sessionId?: number) => {
-  const [sessions, setSessions] = useState<any[]>([]);
-  const [session, setSession] = useState<any>(null);
-  const [upcomingSessions, setUpcomingSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<string[]>([]);
+  const [session, setSession] = useState<string>('');
+  const [upcomingSessions, setUpcomingSessions] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetchSessions = async () => {
     try {
       const data = await SessionService.getSessions();
-      setSessions(data.data);
+      setSessions(data.data as string[]);
     } catch (err) {
       setError((err as Error).message);
     }
@@ -20,7 +20,7 @@ export const useSessions = (sessionId?: number) => {
   const fetchUpcomingSessions = async () => {
     try {
       const data = await SessionService.getSessions({ upcoming: true });
-      setUpcomingSessions(data.data);
+      setUpcomingSessions(data.data as string[]);
     } catch (err) {
       setError((err as Error).message);
     }
@@ -29,7 +29,7 @@ export const useSessions = (sessionId?: number) => {
   const fetchSession = async (id: number) => {
     try {
       const data = await SessionService.getSession(id);
-      setSession(data);
+      setSession(data.data as string);
     } catch (err) {
       setError((err as Error).message);
     }

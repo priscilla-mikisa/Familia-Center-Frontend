@@ -148,7 +148,7 @@ import { useMemo } from 'react';
 import { Calendar, Clock, User } from "lucide-react";
 import Layout from "../Layout";
 import { useSessions } from "@/app/hooks/useSessions";
-import { SessionsSkeleton } from '../LoadingSkeleton/page';
+import { SessionsSkeleton } from '../LoadingSkeleton';
 
 const SessionsPage = () => {
   const { 

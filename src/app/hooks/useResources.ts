@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ResourcesService } from '../api/resources/route';
+import { ResourcesService } from '../api/resources/resources';
 
 export const useResources = () => {
-  const [resources, setResources] = useState<any[]>([]);
+  const [resources, setResources] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -11,7 +11,7 @@ export const useResources = () => {
     setError(null);
     try {
       const data = await ResourcesService.getResources(params);
-      setResources(data.data);
+      setResources(data.data as string[]);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     } finally {

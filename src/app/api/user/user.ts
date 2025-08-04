@@ -13,7 +13,7 @@ export const UserService = {
     return apiClient.get('/counselors/');
   },
 
-  async updateUser(id: number, data: any) {
+  async updateUser(id: number, data: string) {
     return apiClient.patch(`/users/${id}/`, data);
   },
 };

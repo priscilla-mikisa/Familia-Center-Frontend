@@ -18,7 +18,11 @@ const SettingsPage = () => {
     };
 
     try {
-      await updateUser(user.id, updatedData);
+      if (user) {
+        await updateUser(user.id, updatedData);
+      } else {
+        alert('User data is not available.');
+      }
       alert('Profile updated successfully!');
     } catch (err) {
       alert(`Error updating profile: ${(err as Error).message}`);
@@ -29,8 +33,9 @@ const SettingsPage = () => {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
+    console.log(formData);
     
-    // Implement password change logic
+
     alert('Password change functionality to be implemented');
   };
 

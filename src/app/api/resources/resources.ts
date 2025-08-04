@@ -1,4 +1,4 @@
-import apiClient from "../mockApiClient";
+import apiClient from "../apiClient";
 
 export const ResourcesService = {
   getResources: (params?: { category?: string; search?: string }) =>
