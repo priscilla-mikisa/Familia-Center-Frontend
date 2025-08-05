@@ -66,7 +66,7 @@ const ResourcesPage = () => {
                       <span className="inline-block bg-gray-100 rounded px-2 py-1 text-xs mr-2">
                         {resource.category}
                       </span>
-                      <span>{resource.size}</span>
+                      {/* <span>{resource}</span> */}
                     </div>
                   </div>
                   <div className="flex space-x-2">

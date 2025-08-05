@@ -1,63 +1,61 @@
-// src/app/api/programs/route.ts
+// src/app/api/payments/route.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import mockApiClient from '../mockApiClient';
 
-interface Program {
-  id: number;
-  title: string;
-  description: string;
-  is_enrolled: boolean;
-  current_week: number;
-  total_weeks: number;
+interface PaymentRequest {
+  amount: number;
+  currency: string;
+  paymentMethod: 'mpesa' | 'airtel' | 'card';
+  customerEmail: string;
+  phone?: string;
 }
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
-    const upcoming = searchParams.get('upcoming');
-
-    if (id) {
-      const response = await mockApiClient.get<Program>(`/programs/${id}/`);
-      return NextResponse.json(response.data);
-    } else {
-      const params = upcoming ? { upcoming: true } : undefined;
-      const response = await mockApiClient.get<Program[]>('/programs/', { params });
-      return NextResponse.json(response.data);
+    const paymentData: PaymentRequest = await request.json();
+    
+    // Validate required fields
+    if (!paymentData.amount || !paymentData.currency || !paymentData.paymentMethod) {
+      return NextResponse.json(
+        { error: 'Amount, currency and payment method are required' },
+        { status: 400 }
+      );
     }
+
+    // Fixed: Now only passing 2 arguments
+    const response = await mockApiClient.post(
+      '/payments/initiate',
+      paymentData
+    );
+    
+    return NextResponse.json(response.data);
+    
   } catch (error) {
-    console.error('Failed to fetch programs:', error);
+    console.error('Payment processing failed:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch programs' },
+      { error: 'Payment processing failed' },
       { status: 500 }
     );
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
-    const { programId } = await request.json();
-    
-    if (!programId) {
-      return NextResponse.json(
-        { error: 'Program ID is required' },
-        { status: 400 }
-      );
-    }
+    const { searchParams } = new URL(request.url);
+    const reference = searchParams.get('reference');
 
-    // Fixed: Added empty config object as third argument
-    const response = await mockApiClient.post(
-      `/programs/${programId}/enroll/`, 
-      {}, // empty data object
-      {}  // empty config object
-    );
-    return NextResponse.json(response.data);
-    
+    if (reference) {
+      const response = await mockApiClient.get(`/payments/verify/${reference}`);
+      return NextResponse.json(response.data);
+    } else {
+      const response = await mockApiClient.get('/payments/history');
+      return NextResponse.json(response.data);
+    }
   } catch (error) {
-    console.error('Failed to enroll in program:', error);
+    console.error('Failed to process payment request:', error);
     return NextResponse.json(
-      { error: 'Failed to enroll in program' },
+      { error: 'Failed to process payment request' },
       { status: 500 }
     );
   }

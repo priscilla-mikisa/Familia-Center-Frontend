@@ -78,7 +78,7 @@ export const useSessions = (sessionId?: number) => {
     sessions,
     upcomingSessions,
     session,
-    loading,
+        loading,
     error,
     bookSession,
     submitFeedback,
