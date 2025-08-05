@@ -76,7 +76,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMenuOpen, setIsMenuOpen }: Sidebar
               </button>
             </Link>
             
-            <Link href='/components/Sessions'>
+            <Link href='/components/sessions'>
               <button 
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg ${
                   activeTab === 'sessions' 
